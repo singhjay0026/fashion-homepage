@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA TECH | Premium Tech Essentials</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Progress bar / Glassmorphism navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-accent">AURA</span>TECH
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="nav-btn" id="search-trigger" aria-label="Search">
+                    <i data-lucide="search"></i>
+                </button>
+                <button class="nav-btn cart-trigger-btn" id="cart-trigger" aria-label="Cart">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal-content">
+            <div class="search-input-wrapper">
+                <i data-lucide="search" class="search-input-icon"></i>
+                <input type="text" id="search-input" placeholder="Search for products (headphones, keyboard, etc.)...">
+                <button class="search-close" id="search-close" aria-label="Close search">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background" style="background-image: linear-gradient(180deg, rgba(15, 12, 26, 0.4) 0%, rgba(15, 12, 26, 0.95) 100%), url('assets/hero_banner.png');"></div>
+            <div class="hero-content">
+                <div class="badge-new">NEW COLLECTION AVAILABLE</div>
+                <h1 class="hero-title">Elevate Your Digital Workspace</h1>
+                <p class="hero-subtitle">Experience peak performance and minimalist aesthetics with our carefully curated tech essentials. Precision-engineered for modern builders, creators, and developers.</p>
+                <div class="hero-actions">
+                    <a href="#shop" class="btn btn-primary">
+                        <span>Explore Collection</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#featured" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Storefront Section -->
+        <section class="store-section" id="shop">
+            <div class="section-header">
+                <h2 class="section-title">Premium Catalog</h2>
+                <p class="section-desc">Handpicked gear crafted to optimize your focus and productivity.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls-container">
+                <div class="categories-tabs" id="categories-container">
+                    <button class="category-tab active" data-category="all">All Gear</button>
+                    <button class="category-tab" data-category="audio">Audio</button>
+                    <button class="category-tab" data-category="wearables">Wearables</button>
+                    <button class="category-tab" data-category="keyboards">Keyboards</button>
+                    <button class="category-tab" data-category="bags">Bags</button>
+                </div>
+
+                <div class="sort-filter-wrapper">
+                    <div class="search-bar-inline">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="inline-search" placeholder="Quick filter...">
+                    </div>
+                    <div class="select-wrapper">
+                        <i data-lucide="sliders-horizontal" class="select-icon"></i>
+                        <select id="sort-select" aria-label="Sort products">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Top Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be dynamically generated by JS -->
+            </div>
+            
+            <!-- Empty State -->
+            <div class="empty-state hidden" id="empty-state">
+                <i data-lucide="package-search" class="empty-icon"></i>
+                <h3>No items found</h3>
+                <p>Try refining your search terms or selecting a different category.</p>
+                <button class="btn btn-secondary btn-sm" id="reset-filters-btn">Clear Filters</button>
+            </div>
+        </section>
+
+        <!-- Features / About Section -->
+        <section class="features-section" id="featured">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-box">
+                        <i data-lucide="truck"></i>
+                    </div>
+                    <h3>Global Delivery</h3>
+                    <p>Free carbon-neutral shipping on orders exceeding $150. Fully insured and tracked.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3>2-Year Warranty</h3>
+                    <p>Every product is built to endure. We cover repairs and replacements for 24 months.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">
+                        <i data-lucide="refresh-cw"></i>
+                    </div>
+                    <h3>Easy Returns</h3>
+                    <p>Not absolutely satisfied? Return your item in its original condition within 30 days.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart (<span id="cart-items-count">0</span>)</h3>
+            <button class="close-btn" id="cart-close" aria-label="Close cart">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+
+        <div class="cart-items-container" id="cart-items">
+            <!-- Cart items will be dynamically generated by JS -->
+            <div class="cart-empty-message">
+                <i data-lucide="shopping-bag" class="empty-cart-icon"></i>
+                <p>Your bag is currently empty</p>
+                <a href="#shop" class="btn btn-primary btn-sm" id="shop-now-btn">Start Shopping</a>
+            </div>
+        </div>
+
+        <div class="cart-footer hidden" id="cart-footer">
+            <div class="cart-totals">
+                <div class="cart-total-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Shipping</span>
+                    <span class="free-text">Free</span>
+                </div>
+                <div class="cart-total-row total-row">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            <button class="btn btn-primary w-full" id="checkout-btn">
+                <span>Proceed to Checkout</span>
+                <i data-lucide="credit-card"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal-overlay" id="quickview-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="quickview-close" aria-label="Close detail modal">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-body" id="quickview-body">
+                <!-- Content injected dynamically by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-container checkout-container">
+            <button class="modal-close" id="checkout-close" aria-label="Close checkout">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="checkout-layout">
+                <div class="checkout-form-section">
+                    <h2>Shipping Details</h2>
+                    <form id="checkout-form" class="checkout-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cust-name">Full Name</label>
+                                <input type="text" id="cust-name" required placeholder="John Doe">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cust-email">Email Address</label>
+                                <input type="email" id="cust-email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cust-address">Shipping Address</label>
+                                <input type="text" id="cust-address" required placeholder="123 Modern St, Suite A">
+                            </div>
+                        </div>
+                        <div class="form-row col-2">
+                            <div class="form-group">
+                                <label for="cust-city">City</label>
+                                <input type="text" id="cust-city" required placeholder="New York">
+                            </div>
+                            <div class="form-group">
+                                <label for="cust-zip">ZIP / Postal Code</label>
+                                <input type="text" id="cust-zip" required placeholder="10001">
+                            </div>
+                        </div>
+                        
+                        <h2 class="form-payment-title">Payment Info</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-num">Card Number</label>
+                                <div class="card-input-wrapper">
+                                    <i data-lucide="credit-card" class="card-icon"></i>
+                                    <input type="text" id="card-num" required placeholder="4111 2222 3333 4444" maxlength="19">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row col-2">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiry Date</label>
+                                <input type="text" id="card-expiry" required placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvc">CVC</label>
+                                <input type="text" id="card-cvc" required placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-full mt-4" id="submit-order-btn">
+                            <span>Place Secure Order</span>
+                            <i data-lucide="shield-check"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="checkout-summary-section">
+                    <h2>Order Summary</h2>
+                    <div class="checkout-items-list" id="checkout-summary-items">
+                        <!-- Items injected dynamically -->
+                    </div>
+                    <div class="checkout-totals">
+                        <div class="checkout-total-row">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">$0.00</span>
+                        </div>
+                        <div class="checkout-total-row">
+                            <span>Shipping</span>
+                            <span>Free</span>
+                        </div>
+                        <div class="checkout-total-row total-row">
+                            <span>Total</span>
+                            <span id="checkout-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Order Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-container success-container">
+            <div class="success-animation-wrapper">
+                <div class="success-circle">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for choosing <strong>AURA TECH</strong>. We've sent a receipt and shipment confirmation details to your email address.</p>
+            <p class="order-id-label">Order ID: <span id="success-order-id">#ATH-82794</span></p>
+            <button class="btn btn-primary" id="success-close-btn">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="about">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-accent">AURA</span>TECH
+                <p class="footer-tagline">Crafting the tools of tomorrow. Built for developers, designers, and minimalist enthusiasts.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links-group">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#shop">Audio Gear</a></li>
+                    <li><a href="#shop">Wearables</a></li>
+                    <li><a href="#shop">Keyboards</a></li>
+                    <li><a href="#shop">Bags</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Warranty Details</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">Shipping FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter" id="contact">
+                <h4>Newsletter</h4>
+                <p>Subscribe to receive product launches, exclusive restocks, and weekly digests.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Your email address" required aria-label="Email Address">
+                    <button type="submit" aria-label="Subscribe"><i data-lucide="send"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 AURA TECH. All rights reserved. Created with absolute visual precision.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
